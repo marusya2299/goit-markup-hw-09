@@ -1,5 +1,5 @@
 'use strict';
-
+import SimpleLightbox from "simplelightbox";
 const form = document.querySelector(".feedback-form");
 const inputEmail = form.querySelector("input");
 inputEmail.setAttribute("placeholder", "Type area");
