@@ -58,23 +58,6 @@ body{
     outline: none;
 }
 
-.feedback-form input::-webkit-input-placeholder{
-    color: rgba(46, 47, 66, 1);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    text-align: left;
-    font-family: "Montserrat", sans-serif;
-    opacity: 0;
-}
-.feedback-form input:active::placeholder,
-.feedback-form input:focus::placeholder,
-.feedback-form input:hover::placeholder{
-    opacity: 1;
-
-}
-
 .feedback-form textarea{
     width: 360px;
     min-height: 80px;
