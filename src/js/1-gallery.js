@@ -1,5 +1,8 @@
 'use strict';
 
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const images = [
   {
     preview:
@@ -71,46 +74,28 @@ const gallery = document.querySelector(".gallery");
 /*Adding images to the gallery*/
 images.forEach(image => {
 
-  /*Item*/
-  const galleryItem = document.createElement("li");
+   const galleryItem = document.createElement("li");
+    galleryItem.classList.add("gallery-item");
 
-  galleryItem.classList.add("gallery-item");
-  gallery.append(galleryItem);
+    galleryItem.innerHTML = `
+        <a href="${image.original}" class="gallery-link">
+            <img src="${image.preview}" alt="${image.description}" class="gallery-image">
+        </a>
+    `;
 
-  /*Link*/
-  const galleryLink = document.createElement("a");
-
-  galleryLink.classList.add("gallery-link");
-  galleryLink.href = image.original;
-  galleryItem.append(galleryLink);
-
-  /*Image*/
-  const galleryImage = document.createElement("img");
-
-  galleryImage.classList.add("gallery-image");
-  galleryImage.src = image.preview;
-  galleryImage.dataset.source = galleryLink.href;
-  galleryImage.alt = image.description;
-  galleryLink.append(galleryImage);
-
-  galleryImage.addEventListener('click', function (event) {
-    event.preventDefault();
+  gallery.appendChild(galleryItem);
+  
+  galleryItem.addEventListener('click', function(event) {
+        event.preventDefault(); 
   });
-    
+  
 });
 
-
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const gallery = new SimpleLightbox('.gallery a', {
-         captions: true,
-         captionDelay: 250,
-         captionPosition: 'bottom',
-         captionType:'attr',
-         captionsData: 'alt'
-    });
+var lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+    captionDelay: 250,
+    captionPosition: 'bottom',
+    captionType: 'attr',
+  captionsData: 'alt'
 });
 
